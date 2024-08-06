@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOKING</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+<body style="background-color: rgb(229, 178, 178);">
+    <nav class="form-control bg-info text-light fw-border d-flex align-items-center">
+        <div class="col-11 d-flex">
+            <img src="https://marketplace.canva.com/EAFMWRbCRm0/1/0/1600w/canva-red-black-minimalist-fitness-logo-dcYVFBq4DTg.jpg" alt="" width="60px" height="60px">
+            <h3 class="ms-3">FitForLife</h3>
+        </div>
+        <div class="col-1">
+            <a href="#" class="fs-4" onclick="logout()">Logout</a>
+        </div>
+    </nav> 
+
+    <div class="mt-5 container p-5 d-flex">
+        <div style="background-color:rgb(229, 178, 178);" class="col-3"></div>
+        <div id="row" style="border-radius: 100px;" class="col-6 text-center bg-light">
+            <h4>Book Your Slots</h4>
+            <h1>Welcome <span id="displayUser" class="text-secondary">User</span></h1><br>
+            <input id="name" type="text" placeholder="Enter Name" class="form-control mt-2">
+            <input id="email" type="email" placeholder="Enter Email" class="form-control mt-2">
+            <input id="num" type="text" placeholder="Enter Contact Number" class="form-control mt-2">
+            <input id="addr" type="text" placeholder="Address" class="form-control my-2">
+            <label for="b1"><b>Select time</b></label><br>
+            <input id="b1" type="radio" name="batch" value="Morning"><label for="b1">Morning</label>
+            <input id="b2" type="radio" name="batch" value="Evening"><label for="b2">Evening</label>
+            <input id="b3" type="radio" name="batch" value="Sunday"><label for="b3">Sunday</label>    
+            <button onclick="booking()" class="btn btn-danger mt-4 form-control">Book Now</button>
+        </div>
+        <div style="background-color:rgb(229, 178, 178);" class="col-3"></div>
+    </div>
+   
+    <script>
+        if (localStorage.getItem("username")) {
+            document.getElementById("displayUser").innerHTML = localStorage.getItem("username");
+        } else {
+            alert("Please login!!!");
+            window.location = "login.html";
+        }
+
+        const logout = () => {
+            localStorage.clear();
+            window.location = "index.html";
+        }
+
+        const booking = () => {
+            const uname = document.getElementById("name").value;
+            const Email = document.getElementById("email").value;
+            const phno = document.getElementById("num").value;
+            const addrss = document.getElementById("addr").value;
+            const batchTime = document.querySelector('input[name="batch"]:checked')?.value;
+            if (uname && Email && phno && addrss && batchTime) {
+                alert("Booking Successfully completed...!");
+            } else {
+                alert("Fill the form completely!!!");
+            }
+        }
+    </script>
+</body>
+</html>
